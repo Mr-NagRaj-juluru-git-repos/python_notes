@@ -1,0 +1,324 @@
+1)list[]
+---------
+-->list is one of the predefined class
+-->An object of list allows us to store muliple values of same type or different type or both types 
+--> An oject of list types allows us organize both unique and duplicate values.
+-->The elements of list must be enclosed within square brackets [] and the values must be seperated by comma(,)
+-->An object of list maintains insertion order.
+-->On the object of list,we can perform both indexing and slicing.
+-->list is mutabe
+-->To convert one type values into list type values ,we use list()
+-> to Create empty list
+		two ways we can create 
+		1)l=list()
+		2)l=[]
+
+Examples:
+---------
+	>>> l1=[10,20,30,16,-23]
+	>>> l2=[12,"KVR","ABC",94.5]
+	>>> print(l1,type(l1))
+	[10, 20, 30, 16, -23] <class 'list'>
+	>>> print(l2,type(l2))
+	[12, 'KVR', 'ABC', 94.5] <class 'list'>
+	>>> print(l1[0])         --> list allows indexing and slicing 
+	10						
+	>>> print(l1[1:4])
+	[20, 30, 16]
+	>>> print(l2[-4:-1])
+	[12, 'KVR', 'ABC']
+	>>>
+			
+Functions in list 
+--------------------
+1)append()
+2)insert()
+3)pop()
+4)remove()
+5)index()
+6)copy()
+7)reverse()
+8)sort()
+9)clear()
+10)extend()
+
+
+
+1)append():
+		This function is used for adding an element to the list oject at end of list object.
+		syntax:
+			listobj.append(element)
+2)insert()
+		this function is used for inserting an element in the list object by specifying the valid existing position 
+		syntax:
+			list obj.insert(validpos,element)
+3)pop()
+		a) pop()
+				This function is used for removing an element from the list object by specifying the valid existing position  
+			syntax:list obj.pop(valid position)
+		b) pop()
+				This function is used for removing a topmost/latest element from the list object without specifying the valid existing position  
+			syntax:list obj.pop()
+			
+	Examples:
+			>>> l1=[10,"Rs"]
+			>>> l1.append(12.34)
+			>>> print(l1)
+			[10, 'Rs', 12.34]
+			>>> l1.insert(2,"NL")
+			>>> print(l1)
+			[10, 'Rs', 'NL', 12.34]
+			>>> l1.pop(2)
+			'NL'
+			>>> print(l1)
+			[10, 'Rs', 12.34]
+			>>> l1.pop()
+			12.34
+			>>> print(l1)
+			[10, 'Rs']
+			>>>
+
+			
+4)remove()
+		This function is used for removing the specific element from the list (first occurrence only )provided the element must present 
+		otherwise, we get ValueError
+		syntax:
+			listobj.remove(element)
+		Example:>>> l1=[10,20,30,20,50,60]
+				>>> l1.remove(20)
+				>>> print(l1)
+				[10, 30, 20, 50, 60]
+				>>> l1.remove(100)
+				Traceback (most recent call last):
+				  File "<stdin>", line 1, in <module>
+				ValueError: list.remove(x): x not in list
+			
+5)index()
+		This function is used  for finding an +ve index of a specified element of a list provided element present in the list otherwise we get ValueError
+		syntax:
+				listobj.index(element)
+		Example:
+				>>> l1=[10,20,30,20,50,60]
+				>>> l1.index(20)
+					2
+				>>> l1.index(60)
+					4
+				>>>
+				
+6)copy()
+		1)shallow copy
+		2)deep copy
+		
+	1)shallow copy:
+	--------------
+		This function is used to copy the content of the source list object into the destination list object with the same content with a different address.
+		this type of copy process is called shallow copy.
+	syntax:	
+			dest.listobject=sourcelistobj.copy()
+	Example:
+	>>> l1=[10,20,30,'HYD']
+	>>> type(l1)
+	<class 'list'>
+	>>> l2=l1.copy()
+	>>> print(l1,l2)
+	[10, 20, 30, 'HYD'] [10, 20, 30, 'HYD']
+	>>> print(id(l1),id(l2))
+	2237779829384 2237780315080
+	>>> l1.append("AI")
+	>>> print(l1,l2)
+	[10, 20, 30, 'HYD', 'AI'] [10, 20, 30, 'HYD']
+	>>>
+Note: 
+--> Initial content of source and destination list objects are same 
+--> Address of source and destination list objects are different.
+--> Modification are not reflected(Independent)
+
+			
+	2)deep copy:
+	-------------
+	Example:
+		>>> l3=l1
+		>>> print(id(l3),id(l1))
+		2237779829384 2237779829384
+		>>> l1.append("AI")
+		>>> print(l1,l3)
+		[10, 20, 30, 'HYD', 'AI'] [10, 20, 30, 'HYD', 'AI']
+		>>>
+Note:
+	-->Initial content of source and destination list object are the same 
+	--> Address of source and destination list objects are the same.
+	--> Modifications are  reflected to each other(dependent)
+	
+Special Note point for a shallow copy:
+------------------------
+			Example:
+					>>> l1=[101,"HYD"]
+					>>> l2=l1[:]		# shallow copy with slicing
+					>>> print(l1,l2)
+					[101, 'HYD'] [101, 'HYD']
+					>>> l1.append("BNGLR")
+					>>> print(l1,l2)
+					[101, 'HYD', 'BNGLR'] [101, 'HYD']
+					>>> print(id(l1),id(l2))
+					2237785586824 2237785609992
+					>>>
+	
+7)reverse()
+			This function is used for obtaining the reverse of given elements of list obj.
+			syntax: listobj.reverse()
+			Example:-
+			>>> l1=[101,"HYD"]
+			>>> l1.append("BNGLR")
+			>>> l1.reverse()
+			>>> print(l1)
+				['BNGLR', 'HYD', 101]
+
+special point:
+		to revere the string we can use slicing also 
+	Example:
+			>>> strng='radar'
+			>>> strng[::-1]
+			'radar'
+8)sort()
+		This function is used for sorting the elements of a list object in ascending order provided elements must be homogenous
+		syntax:
+				list obj.sort()
+		Example:		
+			l2=[10,-20,15,5,-1,0]
+			>>> l2.sort()
+			>>> print(l2)
+			[-20, -1, 0, 5, 10, 15]----> Ascending Order 
+			>>> l2.reverse()
+			>>> print(l2) 
+			[15, 10, 5, 0, -1, -20]----> Descending Order 
+			>>>
+			
+	Special Point:
+	----------------
+				l2.sort(reverse=True)--->Directly display in decending order 
+				>>> l2.sort(reverse=True)
+				>>> print(l2)
+				[15, 10, 5, 0, -1, -20]
+			
+9)clear()
+		This function is used for removing /cleaning all the elements of the list 
+		object(object remains same)
+	syntax:listobj.clear()
+	Example:
+			>>> l1=["RS","AS","ZX","VX"]
+			>>> len(l1)
+			4
+			>>> l1.clear()
+			>>> len(l1)
+			0
+			>>> l1=["RS","AS","ZX","VX"]
+			>>> del (l1[0])
+			>>> print(l1)
+			['AS', 'ZX', 'VX']
+			>>> len(l1)
+			3
+			>>> del(l1[1:3])
+			>>> len(l1)
+			1
+			>>> print(l1)
+			['AS']
+			>>> l1=["RS","AS","ZX","VX"]
+			>>> del(l1)
+			>>> print(l1)
+
+special Point
+----------------
+		del()--> Is one of the predefined functions present in built-ins module and it is by default imported 
+		del() is used for deleting the values of any iterable objects(list,str,..etc) and objects also
+			syntax:
+				del(obj name)
+				  or 
+				del(objejname[index])
+				 or
+				 del(objname[start:stop])
+		Example:
+			>>> l1=[10,20,30]
+			>>> del(l1[0])
+			>>> print(l1)
+			[20, 30]
+			>>> del(l1)
+			>>> print(l1)
+			Traceback (most recent call last):
+			  File "<stdin>", line 1, in <module>
+			NameError: name 'l1' is not defined
+			>>>
+			
+		
+		
+10)extend()
+		This function is used for adding the content of the destination list object to the source list object content.
+		Syntax:
+			source obj.extend(destination obj)
+		
+	Example:
+			>>> l1=[10,20,30]
+			>>> l2=["PYTHON","AI"]
+			>>> l1.extend(l2)
+			>>> print(l1)
+			[10, 20, 30, 'PYTHON', 'AI']
+			>>> print(l2)
+			['PYTHON', 'AI']
+			>>>
+Note special point:
+-------------------
+		We can use operator + for extending the functionality of different source list objects into a destination list object 
+		Example:
+			>>> l1=[10,20]
+			>>> l2=["PYTHON","JAVA"]
+			>>> l3=["TRUE","FALSE"]
+			>>> l4=["True",2+3j]
+			>>> l5=l1+l2+l3+l4
+			>>> print(l5)
+			[10, 20, 'PYTHON', 'JAVA', 'TRUE', 'FALSE', 'True', (2+3j)]
+			>>>
+10)count()
+	This function is used for counting no.of occurances of a specific element in a list object
+	syntax:
+		listobject.count(element)
+	Example:
+		>>> l1=[10,30,10,40,10,-60,70]
+		>>> l1.count(10)
+		3
+		>>> l1.count(30)
+		1
+		>>> l1.count(40)
+		1
+		>>> l1.count(1000)
+		0
+		>>>
+
+inner/nested list
+---------------------
+	The process of adding one list to another list is called an inner /nested list 
+syntax:listobj=[elements of list,[elements of inner list-1]...[elements of inner list-n]]
+	
+	Example: Create an list with an inner list for representing student details as list elements, subjects as inner list and marks another inner list. 
+			>>> s1=[10,"Anil",["C","C++","PYTHON"],[30,40,50],"JNTUH"]
+			>>> print(s1)
+			[10, 'Anil', ['C', 'C++', 'PYTHON'], [30, 40, 50], 'JNTUH']
+			>>> print(type(s1))
+			<class 'list'>
+			>>> print(s1[2])
+			['C', 'C++', 'PYTHON']
+			>>> print(s1[2[0]])
+			Traceback (most recent call last):
+			  File "<stdin>", line 1, in <module>
+			TypeError: 'int' object is not subscribable
+			>>> print(s1[2][0])
+			C
+			>>> print(s1[2][1])
+			C++
+			>>> s1[2].append("ML")
+			>>> print(s1)
+			[10, 'Anil', ['C', 'C++', 'PYTHON', 'ML'], [30, 40, 50], 'JNTUH']
+			>>> s1[3].append(90)
+			>>> s1
+			[10, 'Anil', ['C', 'C++', 'PYTHON', 'ML'], [30, 40, 50, 90], 'JNTUH']
+			>>>
+		<img src="../python_whiteboard_diagrams/Inner_or_nested_list.png" width="1378" height="731" border="0" alt="" />
+			
